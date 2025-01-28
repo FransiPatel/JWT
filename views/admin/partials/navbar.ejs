@@ -1,0 +1,21 @@
+<div class="admin-sidebar">
+  <h2>Admin Panel</h2>
+  <a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">Home</a>
+  <a href="/admin/dashboard" class="nav-link <%= currentPage === 'dashboard' ? 'active' : '' %>">Dashboard</a>
+  <a href="/admin/blogs" class="nav-link <%= currentPage === 'all-blogs' ? 'active' : '' %>">All Blogs</a>
+  <a href="/create-blog" class="nav-link <%= currentPage === 'add-blog' ? 'active' : '' %>">Add New Blog</a>
+  <a href="/admin/categories" class="nav-link <%= currentPage === 'all-categories' ? 'active' : '' %>">All Categories</a>
+  <a href="/admin/categories/add" class="nav-link <%= currentPage === 'add-category' ? 'active' : '' %>">Add New Category</a>
+  <a href="/logout" class="nav-link">Logout</a>
+</div>
+
+<style>
+  .nav-link.active {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+  }
+  a{
+    margin-right: 20px;
+  }
+</style>

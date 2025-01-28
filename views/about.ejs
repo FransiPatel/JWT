@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Learn more about the team and mission behind Your Daily Dose.">
+        <title>About Us - Your Daily Dose</title>
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .about-header {
+                background-color: #f8f9fa;
+                padding: 60px 0;
+                text-align: center;
+            }
+
+            .about-header h1 {
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+
+            .about-header p {
+                font-size: 1.2rem;
+                margin-top: 15px;
+            }
+
+            .mission-section, .team-section {
+                padding: 60px 0;
+            }
+
+            .team-member img {
+                /* width: 120px;
+                height: 120px; */
+                object-fit: cover;
+            }
+
+            .team-member h5 {
+                margin-top: 15px;
+                font-weight: bold;
+            }
+
+            .team-member p {
+                color: gray;
+                margin-bottom: 0;
+            }
+
+            .contact-section {
+                background-color: #343a40;
+                color: white;
+                padding: 40px 0;
+                text-align: center;
+            }
+
+            .contact-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-section a {
+                color: #ffc107;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            .contact-section a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <%- include('partials/navbar', { user: user, currentPage: 'about' }) %>
+
+        <!-- About Header -->
+        <section class="about-header">
+            <div class="container">
+                <h1>About Your Daily Dose</h1>
+                <p>Sharing stories, ideas, and inspiration to keep you informed and entertained every day.</p>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission-section text-center">
+            <div class="container">
+                <h2 class="mb-4">Our Mission</h2>
+                <p class="lead">At <strong>Your Daily Dose</strong>, we believe in the power of words to inspire change and connect people. Our goal is to provide a platform where bloggers can share their stories and readers can find fresh perspectives on topics that matter most.</p>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Meet Our Team</h2>
+                <div class="row justify-content-center">
+                    <!-- Team Member 1 -->
+                    <div class="col-md-4 text-center team-member">
+                        <img src="assets/Person 1 img 1.png" alt="Team Member 1">
+                        <h5>Alice Johnson</h5>
+                        <p>Founder & Editor-in-Chief</p>
+                    </div>
+                    <!-- Team Member 2 -->
+                    <div class="col-md-4 text-center team-member">
+                        <img src="assets/Person 2 img 1.png" alt="Team Member 2">
+                        <h5>Michael Lee</h5>
+                        <p>Content Manager</p>
+                    </div>
+                    <!-- Team Member 3 -->
+                    <div class="col-md-4 text-center team-member">
+                        <img src="assets/Person 3 img 1.png" alt="Team Member 3">
+                        <h5>Sophia Patel</h5>
+                        <p>Creative Writer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <h2>Want to Collaborate?</h2>
+                <p>We’d love to hear from you! Reach out to us at <a href="mailto:contact@yourdailydose.com">contact@yourdailydose.com</a>.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <%- include('partials/footer') %>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

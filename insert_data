@@ -1,0 +1,70 @@
+const mongoose = require('mongoose');
+const Blog = require('./models/blog');
+const User = require('./models/user');
+
+
+const insertData = async () => {
+  try {
+    // Insert Users
+    const admin = new User({
+      username: 'admin',
+      email: 'admin@example.com',
+      password: 'admin123',
+      role: 'admin',
+    });
+
+    const user = new User({
+      username: 'john_doe',
+      email: 'john@example.com',
+      password: 'userpassword123',
+      role: 'user',
+    });
+
+    await admin.save();
+    await user.save();
+
+    // Insert Blogs
+    const blogs = [
+      {
+        title: 'Understanding Node.js Event Loop',
+        slug: 'understanding-node-js-event-loop',
+        description: 'An in-depth look at the Node.js event loop.',
+        content: 'The event loop is the heart of Node.js, enabling non-blocking I/O operations...',
+        category: 'Programming',
+        imageUrl: 'https://media.geeksforgeeks.org/wp-content/uploads/20240509115836/The-Future-of-Web-Development-[Top-Trends-and-Predictions].webp',
+        author: Sophia,
+      },
+      {
+        title: '10 Tips for Writing Better JavaScript',
+        slug: '10-tips-for-writing-better-javascript',
+        description: 'Learn how to write clean, efficient JavaScript code.',
+        content: 'JavaScript is versatile and powerful, but it can be messy if not written well...',
+        category: 'Web Development',
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcJNuNqQtsoR8Mwts383eBnG8961lIayjanA&s',
+        author: Jack,
+      },
+      {
+        title: 'The Power of MongoDB for Modern Applications',
+        slug: 'power-of-mongodb-for-modern-applications',
+        description: 'Why MongoDB is a top choice for modern app development.',
+        content: 'MongoDB offers flexibility, scalability, and ease of use for developers...',
+        category: 'Database',
+        imageUrl: 'https://media.istockphoto.com/id/1371339413/photo/co-working-team-meeting-concept-businessman-using-smart-phone-and-digital-tablet-and-laptop.jpg?s=612x612&w=0&k=20&c=ysEsVw3q2axYt3oVZAuQjtHRlN3lY-U_e0ikK5yKIXQ=',
+        author: Liam,
+      },
+    ];
+
+    for (let blogData of blogs) {
+      const blog = new Blog(blogData);
+      await blog.save();
+    }
+
+    console.log('Data inserted successfully!');
+  } catch (error) {
+    console.error('Error inserting data:', error);
+  } finally {
+    mongoose.connection.close();
+  }
+};
+
+insertData();

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Post">
+    <meta name="author" content="Your Website">
+    <title><%= blog.title %> - Blog Post</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation -->
+    <%- include('partials/navbar', { user: user, currentPage: 'home' }) %>
+
+
+    <!-- Blog Post Header -->
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder"><%= blog.title %></h1>
+                <div class="text-muted fst-italic mb-2">
+                    Posted on <%= new Date(blog.createdAt).toLocaleDateString() %> by <%= blog.author || 'Anonymous' %>
+                </div>
+                <!-- Display blog-specific category -->
+                <% if (blog.category) { %>
+                    <div class="mb-2">
+                        <a class="badge bg-secondary text-decoration-none link-light" href="/category/<%= blog.category.name %>"><%= blog.category.name %></a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <img class="card-img-top" src="<%= blog.imageUrl %>" alt="<%= blog.title %>" />
+                    <div class="card-body">
+                        <!-- Render raw HTML content -->
+                        <div class="blog-content">
+                            <%- blog.content %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side widgets-->
+            <%- include('partials/sideWidget') %>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+
+    <!-- Bootstrap core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS -->
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

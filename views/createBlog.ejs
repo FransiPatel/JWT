@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+    <% if (user && user.role === 'admin') { %>
+        <link rel="stylesheet" href="/styles/style.css" />
+        <% } %>
+</head>
+<body>
+    <!-- Navigation -->
+    <% if (user && user.role === 'admin') { %>
+        <%- include('admin/partials/navbar', { user: user, currentPage: 'add-blog' }) %>
+    <% } else { %>
+        <%- include('partials/navbar', { user: user, currentPage: 'create-blog' }) %>
+    <% } %>
+
+    <!-- Blog Form -->
+    <div class="container py-5">
+        <h1 class="text-center">Create a New Blog</h1>
+        <form action="/create-blog" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <!-- <div class="mb-3">
+                <label for="slug" class="form-label">Slug (auto-generated)</label>
+                <input type="text" class="form-control" id="slug" name="slug" disabled>
+            </div> -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image URL</label>
+                <input type="text" class="form-control" id="imageUrl" name="imageUrl">
+            </div>
+            <!-- <div class="mb-3">
+                <label for="publishDate" class="form-label">Publish Date</label>
+                <input type="date" class="form-control" id="publishDate" name="publishDate">
+            </div> -->
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" name="categoryName" required>
+                    <option value="" selected disabled>Select a category</option>
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category.name %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
+                <% if (user && user.role === 'admin') { %>
+                <div class="mt-2">
+                    <label for="newCategory" class="form-label">Or Add a New Category</label>
+                    <input type="text" class="form-control" id="newCategory" name="newCategory" placeholder="Enter new category">
+                </div>
+                <% } %>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author Name</label>
+                    <input type="text" class="form-control" id="author" name="author">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Blog</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <% if (!user || user.role !== 'admin') { %>
+        <%- include('partials/footer') %>
+    <% } %>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

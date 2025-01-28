@@ -1,0 +1,57 @@
+<div class="col-lg-4">
+    <!-- Search widget-->
+<div class="card mb-4">
+    <div class="card-header">Search</div>
+    <div class="card-body">
+        <form action="/search" method="GET">
+            <div class="input-group">
+                <input 
+                    class="form-control" 
+                    type="text" 
+                    name="query" 
+                    placeholder="Enter search term..." 
+                    aria-label="Enter search term..." 
+                    required 
+                />
+                <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <!-- Categories widget-->
+    <form method="GET" action="/">
+        <div class="mb-3">
+            <label for="category" class="form-label">Filter by Category</label>
+            <select class="form-select" id="category" name="category" onchange="this.form.submit()">
+                <option value="">All Categories</option>
+                <% categories.forEach(function(category) { %>
+                    <option value="<%= category %>" <%= categoryFilter === category ? 'selected' : '' %>><%= category %></option>
+                <% }) %>
+            </select>
+        </div>
+    </form>
+    <!-- Side widget-->
+    <!-- <div class="card mb-4">
+        <div class="card-header">Side Widget</div>
+        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+    </div> -->
+
+    <!-- Popular Blogs Widget -->
+    <div class="card mb-4">
+        <div class="card-header">Popular Blogs</div>
+        <div class="card-body">
+            <% if (popularBlogs.length > 0) { %>
+                <ul class="list-unstyled">
+                    <% popularBlogs.forEach(blog => { %>
+                        <li class="mb-2">
+                            <a href="/blog/<%= blog.slug %>"><%= blog.title %></a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p>No popular blogs available.</p>
+            <% } %>
+        </div>
+    </div>
+</div>

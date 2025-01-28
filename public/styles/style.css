@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9; /* Light background */
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+.admin-sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    color: white;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+.admin-sidebar a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.admin-sidebar a:hover {
+    background-color: #495057;
+}
+.content-area {
+    margin-left: 250px;
+    padding: 20px;
+}
+.header {
+    background-color: #ffffff;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.header h1 {
+    margin: 0;
+}
+.stat-card {
+    background-color: #eaf2f8; /* Light blue */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+.stat-card h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+.stat-card p {
+    margin: 10px 0 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+}
+table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-collapse: collapse;
+    width: 100%;
+}
+table th {
+    background-color: #85c1e9; /* Light sky blue */
+    color: black;
+}
+table tbody tr:nth-child(even) {
+    background-color: #d6eaf8; /* Light pastel blue */
+}
+table tbody tr:nth-child(odd) {
+    background-color: #f2f4f6; /* Light pastel grey */
+}
+table td, table th {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+table td button {
+    margin-right: 8px; /* Adds spacing between buttons */
+}
+.btn-edit {
+    background-color: #51abe7; /* Light blue */
+    color: white;
+    border: none;
+}
+.btn-edit:hover {
+    background-color: #3498db;
+}
+.btn-delete {
+    background-color: #f56c5d; /* Light coral */
+    color: white;
+    border: none;
+}
+.btn-delete:hover {
+    background-color: #e74c3c;
+}

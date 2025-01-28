@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog Home</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+        
+        <style>
+            .card.mb-4 {
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+        </style>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <%- include('partials/navbar', { user: user, currentPage: 'home' }) %>
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+                    <p class="lead mb-0">A curated collection of thoughts, ideas, and provocations to spark your imagination.</p>
+                </div>
+            </div>
+        </header>
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <% if (blogs.length > 0) { %>
+                        <!-- Featured blog post-->
+                        <div class="card mb-4">
+                            <a href="/blog/<%= blogs[0].slug %>"><img class="card-img-top" src="<%= blogs[0].imageUrl %>" alt="<%= blogs[0].title %>" /></a>
+                            <div class="card-body">
+                                <div class="small text-muted"><%= blogs[0].createdAt.toDateString() %></div>
+                                <h2 class="card-title"><%= blogs[0].title %></h2>
+                                <p class="card-text"><%= blogs[0].description %></p>
+                                <a class="btn btn-primary" href="/blog/<%= blogs[0].slug %>">Read more →</a>
+                            </div>
+                        </div>
+                        <!-- Non-featured blog posts-->
+                        <div class="row">
+                            <% blogs.slice(1).forEach(blog => { %>
+                                <div class="col-lg-6">
+                                    <div class="card mb-4">
+                                        <a href="/blog/<%= blog.slug %>"><img class="card-img-top" src="<%= blog.imageUrl %>" alt="<%= blog.title %>" /></a>
+                                        <div class="card-body">
+                                            <div class="small text-muted"><%= blog.createdAt.toDateString() %></div>
+                                            <h2 class="card-title h4"><%= blog.title %></h2>
+                                            <p class="card-text"><%= blog.description %></p>
+                                            <a class="btn btn-primary" href="/blog/<%= blog.slug %>">Read more →</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <p>No blogs available.</p>
+                    <% } %>
+                    <!-- Pagination -->
+                    <nav aria-label="Pagination">
+                        <hr class="my-0" />
+                        <ul class="pagination justify-content-center my-4">
+                            <!-- "Newer" Button -->
+                            <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+                                <a class="page-link" href="/?page=<%= currentPage - 1 %>" tabindex="-1" aria-disabled="<%= currentPage === 1 %>">Newer</a>
+                            </li>
+
+                            <!-- Page Numbers -->
+                            <% for (let i = 1; i <= totalPages; i++) { %>
+                                <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                                    <a class="page-link" href="/?page=<%= i %>"><%= i %></a>
+                                </li>
+                            <% } %>
+
+                            <!-- "Older" Button -->
+                            <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+                                <a class="page-link" href="/?page=<%= currentPage + 1 %>" aria-disabled="<%= currentPage === totalPages %>">Older</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+                <!-- Side widgets-->
+                <%- include('partials/sideWidget') %>
+            </div>
+        </div>
+        <!-- Footer-->
+        <%- include('partials/footer') %>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
