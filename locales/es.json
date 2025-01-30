@@ -1,0 +1,8 @@
+{
+    "login_required": "Se requieren correo electrónico y contraseña",
+    "invalid_credentials": "Nombre de usuario o contraseña no válidos",
+    "unexpected_error": "Ocurrió un error inesperado",
+    "password_mismatch": "Las contraseñas no coinciden",
+    "user_exists": "El usuario ya existe",
+    "invalid_secret_key": "Clave secreta no válida para el registro de administrador"
+}
