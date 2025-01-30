@@ -14,6 +14,26 @@ const homeRoutes = require('./routes/homeRoutes');
 const { restrictTo } = require('./middlewares/roles');
 const { checkAuth } = require('./middlewares/authenticate');
 
+const i18n = require('i18n');
+
+i18n.configure({
+    locales: ['en', 'fr', 'es'], 
+    directory: path.join(__dirname, './locales'),
+    defaultLocale: 'en',
+    header: 'accept-language', 
+    autoReload: true,
+    syncFiles: true,
+    objectNotation: true
+});
+
+app.use(i18n.init);
+app.use((req, res, next) => {
+    const lang = req.headers['accept-language'] || 'en';
+    req.setLocale(lang);
+    res.locals.__ = res.__;
+    next();
+});
+
 dotenv.config();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
