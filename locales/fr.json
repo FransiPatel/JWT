@@ -1,0 +1,8 @@
+{
+    "login_required": "L'email et le mot de passe sont requis",
+    "invalid_credentials": "Nom d'utilisateur ou mot de passe invalide",
+    "unexpected_error": "Une erreur inattendue s'est produite",
+    "password_mismatch": "Les mots de passe ne correspondent pas",
+    "user_exists": "L'utilisateur existe déjà",
+    "invalid_secret_key": "Clé secrète invalide pour l'inscription administrateur"
+}
